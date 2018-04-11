@@ -1,6 +1,6 @@
 5.times do
   puts "Creating a new user...."
-  User.create(name: Faker::HarryPotter.character, avatar: Faker::Placeholdit.image("50x50"))
+  User.create(name: Faker::HarryPotter.character, avatar: Faker::Placeholdit.image("50x50") )
 end
 
 5.times do
