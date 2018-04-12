@@ -6,7 +6,7 @@ class Api::V1::LocationsController < Api::V1::BaseController
       if top_pin != nil
         location[:photo] = top_pin.image
       else
-        location[:photo] = 'https://imgur.com/a/nFWzc'
+        location[:photo] = 'https://i.imgur.com/YbJozbX.png'
       end
       location
     end
@@ -18,7 +18,7 @@ class Api::V1::LocationsController < Api::V1::BaseController
     if top_pin != nil
       @location[:photo] = top_pin.image
     else
-      @location[:photo] = 'https://imgur.com/a/nFWzc'
+      @location[:photo] = 'https://i.imgur.com/YbJozbX.png'
     end
   end
 
