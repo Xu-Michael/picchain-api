@@ -22,7 +22,7 @@ class Api::V1::LocationsController < Api::V1::BaseController
     params.require(:location).permit(:name, :prize, :longitude, :latitude)
   end
 
-  def render_error_location
+  def render_error
     render json: { errors: @location.errors.full_messages },
       status: :unprocessable_entity
   end
