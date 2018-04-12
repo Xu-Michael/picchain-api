@@ -7,6 +7,7 @@ Rails.application.routes.draw do
         resources :pins, only: [ :create ]
       end
       resources :pins, only: [ :index, :show ]
+      resources :users, only: [ :index, :show ]
     end
   end
 end

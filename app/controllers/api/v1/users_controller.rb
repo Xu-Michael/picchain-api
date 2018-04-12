@@ -20,6 +20,10 @@ class Api::V1::UsersController < Api::V1::BaseController
    #   render json: @users
    # end
   # GET /users/:id
+  def show
+    # @users = policy_scope(User)
+    @user = User.find(params[:id])
+  end
 
   def create
 
