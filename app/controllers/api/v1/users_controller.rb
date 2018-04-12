@@ -30,7 +30,7 @@ class Api::V1::UsersController < Api::V1::BaseController
     # byebug
 
     # Send code, APPID and SECRET to weixin for openid and session_key
-    @user = User.find_by_email(wechat_email) || User.create(user_params)
+    @user = User.find_by_email(wechat_email) || User.create(we_user_params)
 
     p @user
     render json: @user if @user.persisted?
