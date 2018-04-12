@@ -11,6 +11,7 @@ class Api::V1::PinsController < Api::V1::BaseController
   def create
     @location = Location.find(params[:location_id])
     @pin = Pin.new(pin_params)
+    @pin[:upvotes] = 0
     @pin.location = @location
     if @pin.save
       render :show, status: :created
@@ -22,7 +23,7 @@ class Api::V1::PinsController < Api::V1::BaseController
   private
 
   def pin_params
-    params.require(:pin).permit(:tags, :image, :longitude, :latitude, :user_id)
+    params.require(:pin).permit(:tags, :image, :longitude, :latitude, :user_id, :location_id)
   end
 
   def render_error
