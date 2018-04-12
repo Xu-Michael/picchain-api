@@ -30,7 +30,7 @@ class Api::V1::UsersController < Api::V1::BaseController
     # byebug
 
     # Send code, APPID and SECRET to weixin for openid and session_key
-    @user = User.find_by_email(wechat_email) || User.create(we_user_params)
+    @user = User.find_by_email(wechat_email.downcase) || User.create(user_wechat_params)
 
     p @user
     render json: @user if @user.persisted?
@@ -51,7 +51,7 @@ class Api::V1::UsersController < Api::V1::BaseController
     # GET both openid and session_key
     @user_wechat_params['email'] = wechat_email
     @user_wechat_params['password'] = wechat_user.fetch('session_key', Devise.friendly_token)
-    @user_wechat_params['authentication_token'] = @user_wechat_params['password']
+    # @user_wechat_params['authentication_token'] = @user_wechat_params['password']
     @user_wechat_params
   end
 
