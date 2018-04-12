@@ -26,10 +26,13 @@ class Api::V1::UsersController < Api::V1::BaseController
   end
 
   def create
+
     # byebug
+
     # Send code, APPID and SECRET to weixin for openid and session_key
-    @user = User.find_by_email(wechat_email.downcase) || User.create(user_wechat_params)
-    puts @user.persisted?
+    @user = User.find_by_email(wechat_email) || User.create(user_params)
+
+    p @user
     render json: @user if @user.persisted?
 
   end
@@ -48,7 +51,7 @@ class Api::V1::UsersController < Api::V1::BaseController
     # GET both openid and session_key
     @user_wechat_params['email'] = wechat_email
     @user_wechat_params['password'] = wechat_user.fetch('session_key', Devise.friendly_token)
-    # @user_wechat_params['authentication_token'] = @user_wechat_params['password']
+    @user_wechat_params['authentication_token'] = @user_wechat_params['password']
     @user_wechat_params
   end
 
@@ -67,10 +70,5 @@ class Api::V1::UsersController < Api::V1::BaseController
 
   def user_params
     params.require(:user).permit(:name, :avatar)
-  end
-
-  def render_error
-    render json: { errors: @pin.errors.full_messages },
-      status: :unprocessable_entity
   end
 end
