@@ -1,1 +1,1 @@
-json.extract! @location, :id, :longitude, :latitude, :name, :prize, :photo
+json.extract! @location, :pins_count, :photo, :id, :longitude, :latitude, :name, :prize
