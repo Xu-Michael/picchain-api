@@ -8,13 +8,13 @@
   end
 end
 
-# 5.times do
-#   puts "Creating a new location..."
-#   Location.create(address: Faker::Address.street_address, lat: Faker::Address.latitude, lng: Faker::Address.longitude)
-# end
-#
-# User.all.each do |user|
-#   puts "Creating pins for user: #{user.name}..."
-#   Pin.create(user_id: user.id, location_id: Location.find(rand(1..5)).id,
-#              image: Faker::LoremPixel.image, upvotes: rand(1..300))
-# end
+5.times do
+  puts "Creating a new location..."
+  Location.create(address: Faker::Address.street_address, latitude: Faker::Address.latitude, longitude: Faker::Address.longitude, name: Faker::Address.street_address)
+end
+
+User.all.each do |user|
+  puts "Creating pins for user: #{user.name}..."
+  Pin.create(user_id: user.id, location_id: Location.find(rand(1..5)).id,
+             image: Faker::LoremPixel.image, upvotes: rand(1..300))
+end
