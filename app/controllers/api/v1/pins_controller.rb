@@ -1,6 +1,7 @@
 class Api::V1::PinsController < Api::V1::BaseController
   def index
-    @pins = Pin.all
+    @sorted_by_date = Pin.all.order(:created_at)
+    @sorted_by_upvotes = Pin.all.order(:upvotes)
   end
 
   def show
