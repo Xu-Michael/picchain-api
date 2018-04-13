@@ -6,6 +6,6 @@ json.user_pins do
 end
 json.user_locations do
   json.array! @users_locations do |location|
-    json.extract! location, :id, :user_id, :longitude, :latitude, :name, :prize, :photo, :pins_count
+    json.extract! location, :id, :user_id, :top_pin, :longitude, :latitude, :name, :prize, :photo, :pins_count
   end
 end
