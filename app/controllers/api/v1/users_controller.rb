@@ -25,6 +25,15 @@ class Api::V1::UsersController < Api::V1::BaseController
     @user = User.find(params[:id])
     @users_pins = Pin.where(user_id: @user.id).order("#{:upvotes} DESC")
     @users_locations = Location.where(user_id: @user.id)
+    @users_locations.each do |location|
+      location = Location.find(params[:id])
+      top_pin = location.pins.order("upvotes DESC").first
+      if top_pin != nil
+        location[:photo] = top_pin.image
+      else
+        location[:photo] = 'https://i.imgur.com/YbJozbX.png'
+      end
+    end
   end
 
   def create
