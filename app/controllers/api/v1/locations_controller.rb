@@ -20,7 +20,6 @@ class Api::V1::LocationsController < Api::V1::BaseController
     else
       @location[:photo] = 'https://i.imgur.com/YbJozbX.png'
     end
-    @pins_of_location = Pin.where(location_id: @location.id).order("#{:upvotes} DESC")
   end
 
   def create
