@@ -9,4 +9,7 @@ class Location < ApplicationRecord
     pins.count
   end
 
+  def top_pin
+    pins.order("#{:upvotes} DESC").first
+  end
 end
