@@ -6,7 +6,6 @@ class Api::V1::PinsController < Api::V1::BaseController
 
   def show
     @pin = Pin.find(params[:id])
-    @pins_same_location = Pin.where(location_id: @pin.location_id).order("#{:upvotes} DESC")
   end
 
   def create
