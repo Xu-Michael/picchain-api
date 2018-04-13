@@ -24,7 +24,9 @@ class Api::V1::LocationsController < Api::V1::BaseController
   end
 
   def create
+    @user = User.find(params[:user_id])
     @location = Location.new(location_params)
+    @location.user = @user
     if @location.save
       render :show, status: :created
     else
@@ -35,10 +37,10 @@ class Api::V1::LocationsController < Api::V1::BaseController
   private
 
   def location_params
-    params.require(:location).permit(:name, :prize, :longitude, :latitude)
+    params.require(:location).permit(:name, :prize, :longitude, :latitude, :user_id)
   end
 
-  def render_error_location
+  def render_error
     render json: { errors: @location.errors.full_messages },
       status: :unprocessable_entity
   end
