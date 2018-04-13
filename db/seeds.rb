@@ -1,3 +1,4 @@
+
 5.times do
   puts "Creating a new user...."
   user = User.create!(name: Faker::HarryPotter.character, avatar: Faker::Avatar.image, email: Faker::Internet.email, password: Faker::Internet.password)
@@ -9,15 +10,15 @@
 end
 
 location1 = Location.create(name: Faker::LordOfTheRings.location, prize: Faker::Zelda.item, address: Faker::Address.street_address, latitude: 31.2235, longitude: 121.4453, user_id: rand(1..5))
-puts "Creating new location id #{location1.id}"
+puts "Creating new location id #{location1.id}. User id is #{location1.user_id}"
 location2 = Location.create(name: Faker::LordOfTheRings.location, prize: Faker::Zelda.item, address: Faker::Address.street_address, latitude: 31.2245, longitude: 121.4458, user_id: rand(1..5))
-puts "Creating new location id #{location2.id}"
+puts "Creating new location id #{location2.id} User id is #{location2.user_id}"
 location3 = Location.create(name: Faker::LordOfTheRings.location, prize: Faker::Zelda.item, address: Faker::Address.street_address, latitude: 31.2228, longitude: 121.4463, user_id: rand(1..5))
-puts "Creating new location id #{location3.id}"
+puts "Creating new location id #{location3.id} User id is #{location3.user_id}"
 location4 = Location.create(name: Faker::LordOfTheRings.location, prize: Faker::Zelda.item, address: Faker::Address.street_address, latitude: 31.2231, longitude: 121.4450, user_id: rand(1..5))
-puts "Creating new location id #{location4.id}"
+puts "Creating new location id #{location4.id} User id is #{location4.user_id}"
 location5 = Location.create(name: Faker::LordOfTheRings.location, prize: Faker::Zelda.item, address: Faker::Address.street_address, latitude: 31.2238, longitude: 121.4462, user_id: rand(1..5))
-puts "Creating new location id #{location5.id}"
+puts "Creating new location id #{location5.user.id}"
 
 User.all.each do |user|
   rand(1..6).times do

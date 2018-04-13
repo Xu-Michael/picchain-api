@@ -23,6 +23,8 @@ class Api::V1::UsersController < Api::V1::BaseController
   def show
     # @users = policy_scope(User)
     @user = User.find(params[:id])
+    @users_pins = Pin.where(user_id: @user.id).order("#{:upvotes} DESC")
+    @users_locations = Location.where(user_id: @user.id)
   end
 
   def create
