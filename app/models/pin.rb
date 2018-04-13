@@ -11,4 +11,8 @@ class Pin < ApplicationRecord
   def user_name
     user.name
   end
+
+  def user_avatar
+    user.avatar
+  end
 end
